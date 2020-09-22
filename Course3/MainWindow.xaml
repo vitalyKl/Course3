@@ -5,8 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Course3"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-
-    </Grid>
+        Title="MainWindow" Height="500" Width="500" WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        AllowsTransparency="False">
+    <UniformGrid>
+        <Button Name="SendMessage" Background="DarkGray">
+            <Image Source="Resources\SendMessage.Png" Margin="50 50 50 0"/>
+        </Button>
+        <Button x:Name="OpenMessages" Background="DarkGray">
+            <Image Source="Resources\OpenMessage.png" Margin="50 50"/>
+        </Button>
+        <Button Background="DarkGray">
+            <Image Source="Resources\Settings.png" Margin="30 30"/>
+        </Button>
+        <Button Name="Quit" Background="DarkGray">
+            <Image Source="Resources\Quit.png" Margin="40 40"/>
+        </Button>
+    </UniformGrid>
 </Window>

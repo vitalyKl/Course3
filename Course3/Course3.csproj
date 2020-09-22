@@ -6,4 +6,16 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Resources\Quit.png" />
+    <None Remove="Resources\SendMessage.png" />
+    <None Remove="Resources\Settings.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Quit.png" />
+    <Resource Include="Resources\SendMessage.png" />
+    <Resource Include="Resources\Settings.png" />
+  </ItemGroup>
+
 </Project>
