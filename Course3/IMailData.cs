@@ -6,8 +6,6 @@ namespace Course3
 {
     interface IMailData
     {
-        public string MailSender { get; set; }
-
         public string MailReciever { get; set; }
 
         public string MailTitle { get; set; }
@@ -19,6 +17,5 @@ namespace Course3
         public string ServiceLogin { get; set; }
 
         public string ServicePassword { get; set; }
-        
     }
 }

@@ -10,6 +10,7 @@ namespace Course3
         private string _name;
         private string _url;
         private int _port;
+        private string _serviceDomain;
 
         public string Name
         {
@@ -26,6 +27,11 @@ namespace Course3
             get => _port;
             private set => _port = value;
         }
+        public string ServiceDomain
+        {
+            get => _serviceDomain;
+            private set => _serviceDomain = value;
+        }
 
         Regex reg = new Regex(@"(?<name>\w*)\s(?<url>\w*\.\w*\.\w*)\s(?<port>\d*)", RegexOptions.Compiled);
 
@@ -36,6 +42,7 @@ namespace Course3
             Name = match.Groups["name"].Value;
             Url = match.Groups["port"].Value;
             Port = Convert.ToInt32(match.Groups["port"].Value);
+            ServiceDomain = "@" + Url.Substring(Url.IndexOf('.') + 1);
         }
         
     }

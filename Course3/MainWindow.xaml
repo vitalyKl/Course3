@@ -9,16 +9,16 @@
         WindowStyle="None"
         AllowsTransparency="False">
     <UniformGrid>
-        <Button Name="SendMessage" Background="DarkGray" ToolTip="Send message">
+        <Button Name="SendMessage" Background="#606060" ToolTip="Send message">
             <Image Source="Resources\SendMessage.Png" Margin="50 50 50 0"/>
         </Button>
-        <Button x:Name="OpenMessages" Background="DarkGray" ToolTip="Read messages (Still on work!)">
+        <Button x:Name="OpenMessages" Background="#606060" ToolTip="Read messages (Still on work!)">
             <Image Source="Resources\OpenMessage.png" Margin="50 50"/>
         </Button>
-        <Button Background="DarkGray" ToolTip="Settings (Still on work!)">
+        <Button Background="#606060" ToolTip="Settings (Still on work!)">
             <Image Source="Resources\Settings.png" Margin="30 30"/>
         </Button>
-        <Button Name="Quit" Background="DarkGray" ToolTip="Quit">
+        <Button Name="Quit" Background="#606060" ToolTip="Quit">
             <Image Source="Resources\Quit.png" Margin="40 40"/>
         </Button>
     </UniformGrid>

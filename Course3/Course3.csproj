@@ -7,10 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\MailServicesData.txt" />
     <None Remove="Resources\OpenMessage.png" />
     <None Remove="Resources\Quit.png" />
     <None Remove="Resources\SendMessage.png" />
     <None Remove="Resources\Settings.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\MailServicesData.txt" />
   </ItemGroup>
 
   <ItemGroup>
