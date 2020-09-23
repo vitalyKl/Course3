@@ -31,6 +31,7 @@ namespace Course3
         {
             InitializeComponent();
             _mp = new SendMessagePresenter(this);
+            LstServices.ItemsSource = _mp.services;
         }
 
         

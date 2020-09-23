@@ -18,7 +18,9 @@
 
   <ItemGroup>
     <Resource Include="Resources\Close.png" />
-    <Resource Include="Resources\MailServicesData.txt" />
+    <EmbeddedResource Include="Resources\MailServicesData.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>

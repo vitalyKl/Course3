@@ -33,7 +33,7 @@ namespace Course3
             private set => _serviceDomain = value;
         }
 
-        Regex reg = new Regex(@"(?<name>\w*)\s(?<url>\w*\.\w*\.\w*)\s(?<port>\d*)", RegexOptions.Compiled);
+        Regex reg = new Regex(@"(?<name>\w*\.*\w*),\s(?<url>\w*\.\w*\.\w*),\s(?<port>\d*)", RegexOptions.Compiled);
 
         public MailService(string input)
         {
@@ -44,6 +44,11 @@ namespace Course3
             Port = Convert.ToInt32(match.Groups["port"].Value);
             ServiceDomain = "@" + Url.Substring(Url.IndexOf('.') + 1);
         }
-        
+
+        public override string ToString()
+        {
+            return Name;
+        }
+
     }
 }

@@ -12,6 +12,9 @@
     <UniformGrid>
         <Button Name="SendMessage" Background="#606060" ToolTip="Send message">
             <Image Source="Resources\SendMessage.Png" Margin="50 50 50 0"/>
+            <Button.Command>
+                <cmd:CommandOpenSendWindow/>
+            </Button.Command>
         </Button>
         <Button x:Name="OpenMessages" Background="#606060" ToolTip="Read messages (Still on work!)">
             <Image Source="Resources\OpenMessage.png" Margin="50 50"/>
