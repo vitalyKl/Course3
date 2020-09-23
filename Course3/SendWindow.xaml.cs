@@ -28,7 +28,7 @@ namespace Course3
 
         private void BtnSend_Click(object sender, RoutedEventArgs e)
         {
-            _mp.SendMessage();
+            TxtResult.Text = _mp.SendMessage();
         }
 
         private void BtnClose_Click(object sender, RoutedEventArgs e)

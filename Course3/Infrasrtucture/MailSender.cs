@@ -50,16 +50,19 @@ namespace Course3
             }
         }
 
-        public void SendMessage()
+        public string SendMessage()
         {
+            string status = "";
             try
             {
                 _sc.Send(_mm);
+                status = "Сообщение успешно отправлено!";
             }
             catch 
             {
-                MessageBox.Show("Невозможно отправить сообщение!");
+                status = "Ошибка при отправке сообщения! Проверьте входящие данные!";
             }
+            return status;
         }
     }
 }
