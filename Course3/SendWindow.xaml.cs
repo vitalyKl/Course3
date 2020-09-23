@@ -29,6 +29,7 @@ namespace Course3
         private void BtnSend_Click(object sender, RoutedEventArgs e)
         {
             TxtResult.Text = _mp.SendMessage();
+            TabCMenu.SelectedIndex++;
         }
 
         private void BtnClose_Click(object sender, RoutedEventArgs e)
