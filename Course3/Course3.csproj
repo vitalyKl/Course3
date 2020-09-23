@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <None Remove="Resources\Close.png" />
-    <None Remove="Resources\MailServicesData.txt" />
     <None Remove="Resources\OpenMessage.png" />
     <None Remove="Resources\Quit.png" />
     <None Remove="Resources\Retry.png" />
@@ -18,9 +17,6 @@
 
   <ItemGroup>
     <Resource Include="Resources\Close.png" />
-    <EmbeddedResource Include="Resources\MailServicesData.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
@@ -29,5 +25,11 @@
     <Resource Include="Resources\Retry.png" />
     <Resource Include="Resources\SendMessage.png" />
     <Resource Include="Resources\Settings.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Resources\MailServicesData.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 </Project>

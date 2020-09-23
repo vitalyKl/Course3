@@ -1,15 +1,6 @@
 ﻿using Course3.Presenters;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Security;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Course3
 {
@@ -24,8 +15,9 @@ namespace Course3
         public string MailTitle { get => TxtSubject.Text; }
         public string MailText { get => TxtBody.Text; }
         public string SeviceName { get => LstServices.SelectedItem.ToString(); }
-        public string ServiceLogin { get => ServiceLogin; }
-        public string ServicePassword { get => UserPassword.SecurePassword.ToString(); }
+        public string ServiceLogin { get => TxtUserLogin.Text; }
+        public SecureString SecureServicePassword { get => TxtUserPassword.SecurePassword; }
+        public string ServicePassword { get => TxtUserPassword.Password.ToString(); }
 
         public SendWindow()
         {
@@ -34,6 +26,15 @@ namespace Course3
             LstServices.ItemsSource = _mp.services;
         }
 
-        
+        private void BtnSend_Click(object sender, RoutedEventArgs e)
+        {
+            _mp.SendMessage();
+        }
+
+        private void BtnClose_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.MainWindow.Show();
+            this.Close();
+        }
     }
 }

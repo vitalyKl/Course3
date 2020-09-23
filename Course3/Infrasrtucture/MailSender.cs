@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
+using System.Security;
 using System.Text;
 using System.Windows;
 
@@ -31,7 +32,22 @@ namespace Course3
             _sc.EnableSsl = true;
             _sc.DeliveryMethod = SmtpDeliveryMethod.Network;
             _sc.UseDefaultCredentials = false;
-            _sc.Credentials = new NetworkCredential($"{_mailData.ServiceLogin}{selectedService.ServiceDomain}", _mailData.ServicePassword);
+            if (selectedService.IsSecurePasswordNeeded == true)
+            {
+                _sc.Credentials = new NetworkCredential()
+                {
+                    UserName = $"{_mailData.ServiceLogin}{selectedService.ServiceDomain}",
+                    SecurePassword = _mailData.SecureServicePassword
+                };
+            }
+            else
+            {
+                _sc.Credentials = new NetworkCredential()
+                {
+                    UserName = $"{_mailData.ServiceLogin}{selectedService.ServiceDomain}",
+                    Password = _mailData.ServicePassword
+                };
+            }
         }
 
         public void SendMessage()

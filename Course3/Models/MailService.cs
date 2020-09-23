@@ -11,6 +11,7 @@ namespace Course3
         private string _url;
         private int _port;
         private string _serviceDomain;
+        private bool _isSecurePasswordNeeded;
 
         public string Name
         {
@@ -32,16 +33,18 @@ namespace Course3
             get => _serviceDomain;
             private set => _serviceDomain = value;
         }
+        public bool IsSecurePasswordNeeded { get => _isSecurePasswordNeeded; set => _isSecurePasswordNeeded = value; }
 
-        Regex reg = new Regex(@"(?<name>\w*\.*\w*),\s(?<url>\w*\.\w*\.\w*),\s(?<port>\d*)", RegexOptions.Compiled);
+        Regex reg = new Regex(@"(?<name>\w*\.*\w*)\s(?<url>\w*\.\w*\.\w*)\s(?<port>\d*)\s(?<securePasswordStatus>\w*)", RegexOptions.Compiled);
 
         public MailService(string input)
         {
             var match = reg.Match(input);
             if (match == null) return;
             Name = match.Groups["name"].Value;
-            Url = match.Groups["port"].Value;
+            Url = match.Groups["url"].Value;
             Port = Convert.ToInt32(match.Groups["port"].Value);
+            IsSecurePasswordNeeded = Convert.ToBoolean(match.Groups["securePasswordStatus"].Value);
             ServiceDomain = "@" + Url.Substring(Url.IndexOf('.') + 1);
         }
 
