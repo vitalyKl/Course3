@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using System.Text;
+using System.Windows;
 
 namespace Course3
 {
@@ -12,6 +13,7 @@ namespace Course3
     {
         IMailData _mailData;
         private MailMessage _mm;
+        private SmtpClient _sc;
 
         public MailSender(IMailData mailData, ObservableCollection<MailService> services)
         {
@@ -25,12 +27,23 @@ namespace Course3
             _mm.Body = _mailData.MailText;
             _mm.IsBodyHtml = false;
 
-            SmtpClient sc = new SmtpClient(selectedService.Url, selectedService.Port);
-            sc.EnableSsl = true;
-            sc.DeliveryMethod = SmtpDeliveryMethod.Network;
-            sc.UseDefaultCredentials = false;
-            sc.Credentials = new NetworkCredential($"{_mailData.ServiceLogin}{selectedService.ServiceDomain}", _mailData.ServicePassword);            
+            _sc = new SmtpClient(selectedService.Url, selectedService.Port);
+            _sc.EnableSsl = true;
+            _sc.DeliveryMethod = SmtpDeliveryMethod.Network;
+            _sc.UseDefaultCredentials = false;
+            _sc.Credentials = new NetworkCredential($"{_mailData.ServiceLogin}{selectedService.ServiceDomain}", _mailData.ServicePassword);
+        }
 
+        public void SendMessage()
+        {
+            try
+            {
+                _sc.Send(_mm);
+            }
+            catch 
+            {
+                MessageBox.Show("Невозможно отправить сообщение!");
+            }
         }
     }
 }
