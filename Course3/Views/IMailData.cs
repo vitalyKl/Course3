@@ -6,16 +6,16 @@ namespace Course3
 {
     interface IMailData
     {
-        public string MailReciever { get; set; }
+        public string MailReciever { get; }
 
-        public string MailTitle { get; set; }
+        public string MailTitle { get; }
 
-        public string MailText { get; set; }
+        public string MailText { get; }
 
-        public string SeviceName { get; set; }
+        public string SeviceName { get; }
 
-        public string ServiceLogin { get; set; }
+        public string ServiceLogin { get; }
 
-        public string ServicePassword { get; set; }
+        public string ServicePassword { get; }
     }
 }
