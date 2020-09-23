@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Course3"
+        xmlns:cmd="clr-namespace:Course3.Infrasrtucture.Commands"
         mc:Ignorable="d"
         Title="SendWindow" Height="500" Width="500" 
         Background="#606060"
@@ -87,6 +88,9 @@
                     </Button>
                     <Button x:Name="BtnClose" Width="150" Height="150" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="250 300 0 0" ToolTip="Close">
                         <Image Source="Resources\Close.png"/>
+                        <Button.Command>
+                            <cmd:CloseCommand/>
+                        </Button.Command>
                     </Button>
                 </Grid>
             </TabItem>
