@@ -18,6 +18,7 @@
                     #606060
                 </Setter.Value>
             </Setter>
+            <Setter Property="BorderThickness" Value="4"/>
         </Style>
     </Window.Resources>
     <DockPanel Background="#606060">
@@ -41,7 +42,7 @@
                     </TextBlock>
                     <PasswordBox x:Name="TxtUserPassword" Width="300" Height="25" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0 220 0 0">                        
                     </PasswordBox>
-                    <Button x:Name="BtnApplyLoginData" Width="150" Height="50" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 320 0 0">
+                    <Button x:Name="BtnApplyLoginData" Width="150" Height="50" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 320 0 0" Click="BtnApplyLoginData_Click">
                         Next
                     </Button>
                 </Grid>
@@ -71,8 +72,8 @@
             </TabItem>
             <TabItem x:Name="TabResult" Header="Result" Width="120">
                 <Grid>
-                    <TextBox x:Name="TxtResult" Width="450" Height="250" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0 10 0 0"/>                    
-                    <Button x:Name="BtnSendAnother" Width="150" Height="150" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0 300 250 0" ToolTip="Send one more">
+                    <TextBox x:Name="TxtResult" Width="450" Height="250" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0 10 0 0" FontSize="16" FontWeight="Bold" />                    
+                    <Button x:Name="BtnSendAnother" Width="150" Height="150" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0 300 250 0" ToolTip="Send one more" Click="BtnSendAnother_Click">
                         <Image Source="Resources\Retry.png"/>
                     </Button>
                     <Button x:Name="BtnClose" Width="150" Height="150" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="250 300 0 0" ToolTip="Close" Click="BtnClose_Click">

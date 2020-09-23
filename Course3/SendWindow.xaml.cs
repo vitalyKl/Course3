@@ -36,5 +36,18 @@ namespace Course3
             Application.Current.MainWindow.Show();
             this.Close();
         }
+
+        private void BtnApplyLoginData_Click(object sender, RoutedEventArgs e)
+        {
+            TabCMenu.SelectedIndex++;
+        }
+
+        private void BtnSendAnother_Click(object sender, RoutedEventArgs e)
+        {
+            Window x = new SendWindow();
+            x.Show();
+            this.Close();
+
+        }
     }
 }

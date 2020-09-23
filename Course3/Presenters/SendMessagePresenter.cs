@@ -32,10 +32,11 @@ namespace Course3.Presenters
             }
         }
 
-        public void SendMessage()
+        public string SendMessage()
         {
+            string summary = "";
             _ms = new MailSender(_mailData, services);
-            _ms.SendMessage();
+           return summary = _ms.SendMessage();
         }
     }
 }
