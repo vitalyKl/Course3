@@ -72,7 +72,7 @@
             </TabItem>
             <TabItem x:Name="TabResult" Header="Result" Width="120">
                 <Grid>
-                    <TextBox x:Name="TxtResult" Width="450" Height="250" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0 10 0 0" FontSize="16" FontWeight="Bold" />                    
+                    <TextBox x:Name="TxtResult" Width="450" Height="250" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0 10 0 0" FontSize="16" FontWeight="Bold" IsReadOnly="True"/>                    
                     <Button x:Name="BtnSendAnother" Width="150" Height="150" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0 300 250 0" ToolTip="Send one more" Click="BtnSendAnother_Click">
                         <Image Source="Resources\Retry.png"/>
                     </Button>
