@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Course3"
+        xmlns:cmd="clr-namespace:Course3.Infrasrtucture.Commands"
         mc:Ignorable="d"
         Title="MainWindow" Height="500" Width="500" WindowStartupLocation="CenterScreen"
         WindowStyle="None"
@@ -19,6 +20,9 @@
             <Image Source="Resources\Settings.png" Margin="30 30"/>
         </Button>
         <Button Name="Quit" Background="#606060" ToolTip="Quit">
+            <Button.Command>
+                <cmd:ShutDownCommand/>
+            </Button.Command>                
             <Image Source="Resources\Quit.png" Margin="40 40"/>
         </Button>
     </UniformGrid>
