@@ -8,21 +8,25 @@
 
   <ItemGroup>
     <None Remove="Resources\Close.png" />
+    <None Remove="Resources\Home.png" />
     <None Remove="Resources\OpenMessage.png" />
     <None Remove="Resources\Quit.png" />
     <None Remove="Resources\Retry.png" />
+    <None Remove="Resources\Return.png" />
     <None Remove="Resources\SendMessage.png" />
     <None Remove="Resources\Settings.png" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="Resources\Close.png" />
+    <Resource Include="Resources\Home.png" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="Resources\OpenMessage.png" />
     <Resource Include="Resources\Quit.png" />
     <Resource Include="Resources\Retry.png" />
+    <Resource Include="Resources\Return.png" />
     <Resource Include="Resources\SendMessage.png" />
     <Resource Include="Resources\Settings.png" />
   </ItemGroup>
