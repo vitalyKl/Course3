@@ -6,14 +6,13 @@
         xmlns:local="clr-namespace:Course3"
         xmlns:fa="http://schemas.fontawesome.io/icons/"
         xmlns:cmd="clr-namespace:Course3.Infrasrtucture.Commands"
-        mc:Ignorable="d" Height="500" Width="500" WindowStartupLocation="CenterScreen"
+        mc:Ignorable="d" MinHeight="500" MinWidth="500" Width="500" Height="500" WindowStartupLocation="CenterScreen"
+        Background="#606060"
         WindowStyle="None"
         AllowsTransparency="False">
     <UniformGrid>
         <Button Name="SendMessage" Background="#606060" ToolTip="Send message">
-            <Grid Width="250" Height="250">
-                <fa:ImageAwesome Icon="EnvelopeOutline" Margin="40 40"/>
-            </Grid>
+            <fa:ImageAwesome Icon="EnvelopeOutline" Margin="40 40"/>            
             <Button.Command>
                 <cmd:CommandOpenSendWindow/>
             </Button.Command>
