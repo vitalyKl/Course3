@@ -10,7 +10,7 @@
         Background="#606060"
         WindowStyle="None"
         AllowsTransparency="False">
-    <UniformGrid>
+    <UniformGrid Height="500">
         <Button Name="SendMessage" Background="#606060" ToolTip="Send message">
             <fa:ImageAwesome Icon="EnvelopeOutline" Margin="40 40"/>            
             <Button.Command>
