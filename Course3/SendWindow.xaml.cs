@@ -11,7 +11,7 @@ namespace Course3
     {
         private SendMessagePresenter _mp;
 
-        public string MailReciever { get => TxtRecipient.Text; }
+        public string MailReciever { get => TxtSubject.Text; }
         public string MailTitle { get => TxtSubject.Text; }
         public string MailText { get => TxtBody.Text; }
         public string SeviceName { get => LstServices.SelectedItem.ToString(); }
@@ -38,17 +38,22 @@ namespace Course3
             this.Close();
         }
 
-        private void BtnApplyLoginData_Click(object sender, RoutedEventArgs e)
-        {
-            TabCMenu.SelectedIndex++;
-        }
-
         private void BtnSendAnother_Click(object sender, RoutedEventArgs e)
         {
             Window x = new SendWindow();
             x.Show();
             this.Close();
 
+        }
+
+        private void BtnApplyMessage_Click(object sender, RoutedEventArgs e)
+        {
+            TabCMenu.SelectedIndex++;
+        }
+
+        private void BtnApplyLoginData_Click(object sender, RoutedEventArgs e)
+        {
+            TabCMenu.SelectedIndex++;
         }
     }
 }
