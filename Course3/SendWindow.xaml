@@ -60,7 +60,14 @@
                     <PasswordBox x:Name="TxtUserPassword" Width="300" Height="25" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0 220 0 0">
                     </PasswordBox>
                     <CheckBox Name="SavePassword" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 60 0 0" Content="Save password"></CheckBox>
-                    <Button x:Name="BtnApplyLoginData" Width="150" Height="40" Margin="0 200 0 0" Content="Next" Click="BtnApplyLoginData_Click"/>
+                    <Button x:Name="BtnApplyLoginData" Width="150" Height="40" Margin="0 200 0 0" Content="Next">
+                        <Button.Command>
+                            <cmd:NextTabCommand/>
+                        </Button.Command>
+                        <Button.CommandParameter>
+                            <Binding ElementName="TabCMenu"/>
+                        </Button.CommandParameter>
+                    </Button>
                 </Grid>
             </TabItem>
             <TabItem x:Name="TabMessage" Header="Write Message" >
@@ -68,7 +75,7 @@
                     <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 0 0 420">
                     Subject:
                     </TextBlock>
-                    <Button x:Name="OpenTemplate" Width="22" Height="22" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="340 0 0 370" ToolTip="Use saved message">
+                    <Button x:Name="OpenTemplate" Width="22" Height="22" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="340 0 0 370" ToolTip="Use saved message" Click="OpenTemplate_Click">
                         <fa:ImageAwesome Icon="FolderOpen"/>
                     </Button>
                     <TextBox Name="TxtSubject" Width="300" Height="22" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 0 0 370">
@@ -80,15 +87,23 @@
                     </TextBox>
                     <CheckBox Name="SaveAsTemplate" Height="25" Width="Auto" HorizontalAlignment="Center" Margin="0 375 0 0" Content="Save as template">
                     </CheckBox>
-                    <Button x:Name="BtnApplyMessage" Width="150" Height="30" Margin="0 420 0 0" Content="Next" Click="BtnApplyMessage_Click"/>
+                    <Button x:Name="BtnApplyMessage" Width="150" Height="30" Margin="0 420 0 0" Content="Next">
+                        <Button.Command>
+                            <cmd:NextTabCommand/>
+                        </Button.Command>
+                        <Button.CommandParameter>
+                            <Binding ElementName="TabCMenu"/>
+                        </Button.CommandParameter>
+                    </Button>
+
                 </Grid>
             </TabItem>
             <TabItem x:Name="Recipients" Header="Recipients">
                 <Grid>
                     <TextBlock Text="Recipient:" Width="65" Height="25" Margin="0 0 0 400"/>
                     <TextBox x:Name="TxtRecipient" Width="300" Height="25" Margin="0 0 0 350"/>
-                    <CheckBox Name="ChkIsRecipientsFromDb" Content="Select form database" Width="170" Height="25" Margin="0 0 0 290"/>
-                    <DataGrid Name="RecipientsBase" Width="450" Height="300" Margin="0 50 0 0" SelectionMode="Single">
+                    <CheckBox Name="ChkIsRecipientsFromDb" Content="Select form database" Width="170" Height="25" Margin="0 0 0 290" Checked="ChkIsRecipientsFromDb_Checked" Unchecked="ChkIsRecipientsFromDb_Unchecked"/>
+                    <DataGrid Name="RecipientsBase" Width="450" Height="300" Margin="0 50 0 0" SelectionMode="Single" Visibility="Hidden">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Surname" Width="Auto"/>
                             <DataGridTextColumn Header="Name" Width="Auto"/>
@@ -103,7 +118,7 @@
                             <fa:ImageAwesome Icon="LongArrowLeft" Height="15" Width="45"/>
                         </StackPanel>                        
                     </Button>
-                    <Button Name="BtnApplyRecipients" Width="100" Height="45" Margin="110 410 0 0">
+                    <Button Name="BtnApplyRecipients" Width="100" Height="45" Margin="110 410 0 0" Click="BtnApplyRecipients_Click">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="Send" Width="35"/>
                             <fa:ImageAwesome Icon="Send" Height="15" Width="25"/>
@@ -123,7 +138,7 @@
                     </Button>
                 </Grid>
             </TabItem>
-            <TabItem x:Name="SelectMessageTemplate" Header="Select message template" Visibility="Visible">
+            <TabItem x:Name="SelectMessageTemplate" Header="Select message template" Visibility="Collapsed" LostFocus="SelectMessageTemplate_LostFocus">
                 <Grid>
                     <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 20 0 0">
                     Subject:

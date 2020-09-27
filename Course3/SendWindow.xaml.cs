@@ -11,7 +11,7 @@ namespace Course3
     {
         private SendMessagePresenter _mp;
 
-        public string MailReciever { get => TxtSubject.Text; }
+        public string MailReciever { get => TxtRecipient.Text; }
         public string MailTitle { get => TxtSubject.Text; }
         public string MailText { get => TxtBody.Text; }
         public string SeviceName { get => LstServices.SelectedItem.ToString(); }
@@ -46,14 +46,31 @@ namespace Course3
 
         }
 
-        private void BtnApplyMessage_Click(object sender, RoutedEventArgs e)
+        private void ChkIsRecipientsFromDb_Checked(object sender, RoutedEventArgs e)
         {
-            TabCMenu.SelectedIndex++;
+            RecipientsBase.Visibility = Visibility.Visible;
         }
 
-        private void BtnApplyLoginData_Click(object sender, RoutedEventArgs e)
+        private void ChkIsRecipientsFromDb_Unchecked(object sender, RoutedEventArgs e)
         {
-            TabCMenu.SelectedIndex++;
+            RecipientsBase.Visibility = Visibility.Hidden;
+        }
+
+        private void OpenTemplate_Click(object sender, RoutedEventArgs e)
+        {
+            SelectMessageTemplate.Visibility = Visibility.Visible;
+            TabCMenu.SelectedValue = SelectMessageTemplate;
+            TabCMenu.IsManipulationEnabled = false;
+        }
+
+        private void SelectMessageTemplate_LostFocus(object sender, RoutedEventArgs e)
+        {
+            SelectMessageTemplate.Visibility = Visibility.Collapsed;
+        }
+
+        private void BtnApplyRecipients_Click(object sender, RoutedEventArgs e)
+        {
+            _mp.SendMessage();
         }
     }
 }
