@@ -7,7 +7,7 @@ namespace Encoder
 {
     public class DataEncoder
     {
-        public string protectedPassword { get; private set; }
+        public string ProtectedPassword { get; private set; }
         public DataEncoder(string login, string password)
         {
             if (string.IsNullOrWhiteSpace(login) || string.IsNullOrWhiteSpace(password))
@@ -15,7 +15,7 @@ namespace Encoder
             byte[] pass = Encoding.UTF8.GetBytes(password);
             byte[] entropy = GetEntropy(login);
             byte[] crypted = ProtectedData.Protect(pass, entropy, DataProtectionScope.LocalMachine);
-            protectedPassword = Convert.ToBase64String(crypted);
+            ProtectedPassword = Convert.ToBase64String(crypted);
         }        
 
     }

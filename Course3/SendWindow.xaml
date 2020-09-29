@@ -1,140 +1,100 @@
-﻿<Window x:Class="Course3.SendWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:fa="http://schemas.fontawesome.io/icons/"
         xmlns:cmd="clr-namespace:Course3.Infrasrtucture.Commands"
+        xmlns:EditButtons="clr-namespace:EditButtons;assembly=EditButtons" x:Class="Course3.SendWindow"
         mc:Ignorable="d"
         Title="SendWindow" Height="500" Width="500" 
         Background="#606060"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         AllowsTransparency="False"
-        Name="SendWindowWin"
+        x:Name="SendWindowWin"
         >
     <Window.Resources>
-        <Style TargetType="Button">
+        <Style TargetType="{x:Type Button}">
             <Setter Property="Background">
                 <Setter.Value>
-                    #606060
+                    <Brush>#606060</Brush>
                 </Setter.Value>
             </Setter>
             <Setter Property="BorderThickness" Value="3"/>
-        </Style>        
+        </Style>
     </Window.Resources>
     <DockPanel Background="#606060">
         <TabControl x:Name="TabCMenu" DockPanel.Dock="Top" Background="#606060" FontSize="14" FontWeight="Bold">
             <TabItem x:Name="TabLogin" Header="Login">
                 <Grid>
-                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 80 0 0">
-                        Mail service:
-                    </TextBlock>
-                    <ComboBox x:Name="LstServices" Width="300" Height="25" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0 100 0 0">
-                    </ComboBox>
-                    <Button x:Name="BtnAddMailService" Height="25" Width="25" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="330 100 0 0">
-                        <fa:ImageAwesome Icon="Plus" ToolTip="Add mail service"/>
-                    </Button>
-                    <Button x:Name="BtnEditMailService" Height="25" Width="25" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="385 100 0 0" ToolTip="Edit mail service">
-                        <fa:ImageAwesome Icon="Edit"/>
-                    </Button>
-                    <Button x:Name="BtnDeleteMailService" Height="25" Width="25" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="440 100 0 0" ToolTip="Delete mail service">
-                        <fa:ImageAwesome Icon="Trash"/>
-                    </Button>
-                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 140 0 0">
-                        Login:
-                    </TextBlock>
-                    <ComboBox x:Name="CombCUserLogin" Width="300" Height="25" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 160 0 0" IsEditable="True" DisplayMemberPath="Login">
-                    </ComboBox>
-                    <Button x:Name="BtnAddUserService" Height="25" Width="25" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="330 160 0 0" ToolTip="Add user">
-                        <fa:ImageAwesome Icon="Plus"/>
-                    </Button>
-                    <Button x:Name="BtnEditUserService" Height="25" Width="25" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="385 160 0 0" ToolTip="Edit user">
-                        <fa:ImageAwesome Icon="Edit"/>
-                    </Button>
-                    <Button x:Name="BtnDeleteUserService" Height="25" Width="25" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="440 160 0 0" ToolTip="Remove user">
-                        <fa:ImageAwesome Icon="Trash"/>
-                    </Button>
-                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 200 0 0">
-                        Password:
-                    </TextBlock>
-                    <PasswordBox x:Name="TxtUserPassword" Width="300" Height="25" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0 220 0 0">
-                    </PasswordBox>
-                    <CheckBox Name="ChkSavePassword" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 60 0 0" Content="Save password">
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 80 0 0"><Run Text="Mail service:"/></TextBlock>
+                    <ComboBox x:Name="LstServices" Width="300" Height="25" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0 100 0 0"/>
+                    <EditButtons:UserControl1 HorizontalAlignment="Center" VerticalAlignment="Top" Height="25" Margin="390 100 0 0" Width="100"
+                                              BtnAddToolTip="Add mail service" 
+                                              BtnEditToolTip="Edit mail service"
+                                              BtnDeleteToolTip="Delete mail service"/>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 140 0 0"><Run Text="Login:"/></TextBlock>
+                    <ComboBox x:Name="CombCUserLogin" Width="300" Height="25" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 160 0 0" IsEditable="True" DisplayMemberPath="Login"/>                    
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 200 0 0"><Run Text="Password:"/></TextBlock>
+                    <PasswordBox x:Name="TxtUserPassword" Width="300" Height="25" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0 220 0 0"/>
+                    <CheckBox x:Name="ChkSavePassword" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 60 0 0" Content="Save password" CommandParameter="{Binding ElementName=SendWindowWin}">
                         <CheckBox.Command>
                             <cmd:SaveUserCommand/>
                         </CheckBox.Command>
-                        <CheckBox.CommandParameter>
-                            <Binding ElementName="SendWindowWin"/>
-                        </CheckBox.CommandParameter>
                     </CheckBox>
-                    <Button x:Name="BtnApplyLoginData" Width="150" Height="40" Margin="0 200 0 0" Content="Next">
+                    <Button x:Name="BtnApplyLoginData" Width="150" Height="40" Margin="0 200 0 0" Content="Next" CommandParameter="{Binding ElementName=TabCMenu}">
                         <Button.Command>
                             <cmd:NextTabCommand/>
                         </Button.Command>
-                        <Button.CommandParameter>
-                            <Binding ElementName="TabCMenu"/>
-                        </Button.CommandParameter>
                     </Button>
                 </Grid>
             </TabItem>
             <TabItem x:Name="TabMessage" Header="Write Message" >
                 <Grid>
-                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 0 0 420">
-                    Subject:
-                    </TextBlock>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 0 0 420"><Run Text="Subject:"/></TextBlock>
                     <Button x:Name="OpenTemplate" Width="22" Height="22" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="340 0 0 370" ToolTip="Use saved message" Click="OpenTemplate_Click">
                         <fa:ImageAwesome Icon="FolderOpen"/>
                     </Button>
-                    <TextBox Name="TxtSubject" Width="300" Height="22" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 0 0 370">
-                    </TextBox>
-                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 0 0 300">
-                        Body:
-                    </TextBlock>
-                    <TextBox x:Name="TxtBody" Width="450" Height="300" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 40 0 0" TextWrapping="Wrap" VerticalScrollBarVisibility="Visible" AcceptsReturn="True" AcceptsTab="True">
-                    </TextBox>
-                    <CheckBox Name="SaveAsTemplate" Height="25" Width="Auto" HorizontalAlignment="Center" Margin="0 375 0 0" Content="Save as template">
-                    </CheckBox>
-                    <Button x:Name="BtnApplyMessage" Width="150" Height="30" Margin="0 420 0 0" Content="Next">
+                    <TextBox x:Name="TxtSubject" Width="300" Height="22" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 0 0 370"/>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 0 0 300"><Run Text="Body:"/></TextBlock>
+                    <TextBox x:Name="TxtBody" Width="450" Height="300" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 40 0 0" TextWrapping="Wrap" VerticalScrollBarVisibility="Visible" AcceptsReturn="True" AcceptsTab="True"/>
+                    <CheckBox x:Name="SaveAsTemplate" Height="25" Width="Auto" HorizontalAlignment="Center" Margin="0 375 0 0" Content="Save as template"/>
+                    <Button x:Name="BtnApplyMessage" Width="150" Height="30" Margin="0 420 0 0" Content="Next" CommandParameter="{Binding ElementName=TabCMenu}">
                         <Button.Command>
                             <cmd:NextTabCommand/>
                         </Button.Command>
-                        <Button.CommandParameter>
-                            <Binding ElementName="TabCMenu"/>
-                        </Button.CommandParameter>
                     </Button>
-
                 </Grid>
             </TabItem>
             <TabItem x:Name="Recipients" Header="Recipients">
                 <Grid>
                     <TextBlock Text="Recipient:" Width="65" Height="25" Margin="0 0 0 400"/>
                     <TextBox x:Name="TxtRecipient" Width="300" Height="25" Margin="0 0 0 350"/>
-                    <CheckBox Name="ChkIsRecipientsFromDb" Content="Select form database" Width="170" Height="25" Margin="0 0 0 290" Checked="ChkIsRecipientsFromDb_Checked" Unchecked="ChkIsRecipientsFromDb_Unchecked"/>
-                    <DataGrid Name="RecipientsBase" Width="450" Height="300" Margin="0 50 0 0" SelectionMode="Single" Visibility="Hidden">
+                    <CheckBox x:Name="ChkIsRecipientsFromDb" Content="Select form database" Width="170" Height="25" Margin="0 0 0 290" Checked="ChkIsRecipientsFromDb_Checked" Unchecked="ChkIsRecipientsFromDb_Unchecked"/>
+                    <DataGrid x:Name="RecipientsBase" Width="450" Height="300" Margin="0 50 0 0" SelectionMode="Single" Visibility="Hidden">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Surname" Width="Auto"/>
                             <DataGridTextColumn Header="Name" Width="Auto"/>
                             <DataGridTextColumn Header="Patronymic" Width="Auto"/>
                             <DataGridTextColumn Header="BirthDate" Width="Auto"/>
                             <DataGridTextColumn Header="E-mail" Width="Auto"/>
-                        </DataGrid.Columns>                        
+                        </DataGrid.Columns>
                     </DataGrid>
-                    <Button Name="BtnReturnRecipients" Width="100" Height="45" Margin="0 410 110 0">
+                    <Button x:Name="BtnReturnRecipients" Width="100" Height="45" Margin="0 410 110 0">
                         <StackPanel Orientation="Vertical">
                             <TextBlock Text="Return" Width="50"/>
                             <fa:ImageAwesome Icon="LongArrowLeft" Height="15" Width="45"/>
-                        </StackPanel>                        
+                        </StackPanel>
                     </Button>
-                    <Button Name="BtnApplyRecipients" Width="100" Height="45" Margin="110 410 0 0" Click="BtnApplyRecipients_Click">
+                    <Button x:Name="BtnApplyRecipients" Width="100" Height="45" Margin="110 410 0 0" Click="BtnApplyRecipients_Click">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="Send" Width="35"/>
                             <fa:ImageAwesome Icon="Send" Height="15" Width="25"/>
                         </StackPanel>
                     </Button>
-
                 </Grid>
-            </TabItem>            
+            </TabItem>
             <TabItem x:Name="TabResult" Header="Result">
                 <Grid>
                     <TextBox x:Name="TxtResult" Width="450" Height="250" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0 10 0 0" FontSize="16" FontWeight="Bold" IsReadOnly="True" TextWrapping="Wrap" Background="#A9A9A9" BorderBrush="DarkGray" />
@@ -146,18 +106,12 @@
                     </Button>
                 </Grid>
             </TabItem>
-            <TabItem x:Name="SelectMessageTemplate" Header="Select message template" Visibility="Collapsed" LostFocus="SelectMessageTemplate_LostFocus">
+            <TabItem x:Name="SelectMessageTemplate" Header="Select message template" Visibility="Visible" LostFocus="SelectMessageTemplate_LostFocus">
                 <Grid>
-                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 20 0 0">
-                    Subject:
-                    </TextBlock>
-                    <ComboBox Name="SavedSubject" Width="300" Height="22" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0 40 0 0">
-                    </ComboBox>
-                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 80 0 0">
-                        Body:
-                    </TextBlock>
-                    <TextBox x:Name="SavedBody" Width="450" Height="300" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0 100 0 0" TextWrapping="Wrap" VerticalScrollBarVisibility="Visible" AcceptsReturn="True" AcceptsTab="True" IsReadOnly="True">
-                    </TextBox>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 20 0 0"><Run Text="Subject:"/></TextBlock>
+                    <ComboBox x:Name="SavedSubject" Width="300" Height="22" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0 40 0 0"/>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 80 0 0"><Run Text="Body:"/></TextBlock>
+                    <TextBox x:Name="SavedBody" Width="450" Height="300" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0 100 0 0" TextWrapping="Wrap" VerticalScrollBarVisibility="Visible" AcceptsReturn="True" AcceptsTab="True" IsReadOnly="True"/>
                     <Button x:Name="DeleteSelectedTemplate" Width="100" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 410 330 0" ToolTip="Remove selected template">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="Remove"/>
@@ -184,8 +138,8 @@
                     </Button>
                 </Grid>
             </TabItem>
-            
-            
+
+
         </TabControl>
     </DockPanel>
 </Window>
