@@ -10,7 +10,9 @@
         Background="#606060"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
-        AllowsTransparency="False">
+        AllowsTransparency="False"
+        Name="SendWindowWin"
+        >
     <Window.Resources>
         <Style TargetType="Button">
             <Setter Property="Background">
@@ -19,10 +21,9 @@
                 </Setter.Value>
             </Setter>
             <Setter Property="BorderThickness" Value="3"/>
-        </Style>
+        </Style>        
     </Window.Resources>
     <DockPanel Background="#606060">
-
         <TabControl x:Name="TabCMenu" DockPanel.Dock="Top" Background="#606060" FontSize="14" FontWeight="Bold">
             <TabItem x:Name="TabLogin" Header="Login">
                 <Grid>
@@ -43,7 +44,7 @@
                     <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 140 0 0">
                         Login:
                     </TextBlock>
-                    <ComboBox x:Name="TxtUserLogin" Width="300" Height="25" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 160 0 0" IsEditable="True">
+                    <ComboBox x:Name="CombCUserLogin" Width="300" Height="25" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 160 0 0" IsEditable="True" DisplayMemberPath="Login">
                     </ComboBox>
                     <Button x:Name="BtnAddUserService" Height="25" Width="25" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="330 160 0 0" ToolTip="Add user">
                         <fa:ImageAwesome Icon="Plus"/>
@@ -59,7 +60,14 @@
                     </TextBlock>
                     <PasswordBox x:Name="TxtUserPassword" Width="300" Height="25" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0 220 0 0">
                     </PasswordBox>
-                    <CheckBox Name="SavePassword" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 60 0 0" Content="Save password"></CheckBox>
+                    <CheckBox Name="ChkSavePassword" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 60 0 0" Content="Save password">
+                        <CheckBox.Command>
+                            <cmd:SaveUserCommand/>
+                        </CheckBox.Command>
+                        <CheckBox.CommandParameter>
+                            <Binding ElementName="SendWindowWin"/>
+                        </CheckBox.CommandParameter>
+                    </CheckBox>
                     <Button x:Name="BtnApplyLoginData" Width="150" Height="40" Margin="0 200 0 0" Content="Next">
                         <Button.Command>
                             <cmd:NextTabCommand/>

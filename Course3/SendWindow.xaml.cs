@@ -1,4 +1,5 @@
 ﻿using Course3.Presenters;
+using System.Linq;
 using System.Security;
 using System.Windows;
 
@@ -15,15 +16,15 @@ namespace Course3
         public string MailTitle { get => TxtSubject.Text; }
         public string MailText { get => TxtBody.Text; }
         public string SeviceName { get => LstServices.SelectedItem.ToString(); }
-        public string ServiceLogin { get => TxtUserLogin.Text; }
+        public string ServiceLogin { get => CombCUserLogin.Text; }
         public SecureString SecureServicePassword { get => TxtUserPassword.SecurePassword; }
-        public string ServicePassword { get => TxtUserPassword.Password.ToString(); }
+        public string ServicePassword { get => TxtUserPassword.Password.ToString(); set => TxtUserPassword.Password = value; }
+        public bool? IsSavePassword { get => ChkSavePassword.IsChecked; set => ChkSavePassword.IsChecked = value; }
 
         public SendWindow()
         {
             InitializeComponent();
             _mp = new SendMessagePresenter(this);
-            LstServices.ItemsSource = _mp.services;
         }
 
         private void BtnSend_Click(object sender, RoutedEventArgs e)

@@ -7,17 +7,15 @@ namespace Encoder
 {
     public class DataEncoder
     {
-        private byte[] _crypted;
-
-        public byte[] Crypted { get => _crypted; private set => _crypted = value; }
-
+        public string protectedPassword { get; private set; }
         public DataEncoder(string login, string password)
         {
             if (string.IsNullOrWhiteSpace(login) || string.IsNullOrWhiteSpace(password))
                 return;
             byte[] pass = Encoding.UTF8.GetBytes(password);
             byte[] entropy = GetEntropy(login);
-            Crypted = ProtectedData.Protect(pass, entropy, DataProtectionScope.LocalMachine);
+            byte[] crypted = ProtectedData.Protect(pass, entropy, DataProtectionScope.LocalMachine);
+            protectedPassword = Convert.ToBase64String(crypted);
         }        
 
     }
