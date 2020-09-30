@@ -12,22 +12,22 @@
         AllowsTransparency="False">
     <UniformGrid Height="500">
         <Button Name="SendMessage" Background="#606060" ToolTip="Send message">
-            <fa:ImageAwesome Icon="EnvelopeOutline" Margin="40 40"/>            
             <Button.Command>
                 <cmd:CommandOpenSendWindow/>
             </Button.Command>
+            <fa:ImageAwesome Icon="EnvelopeOutline" Margin="40 40"/>
         </Button>
-        <Button x:Name="OpenMessages" Background="#606060" ToolTip="Read messages (Still on work!)">
-            <fa:ImageAwesome Icon="EnvelopeOutlinepenOutline" Margin="40 40"/>
+        <Button x:Name="OpenPlanner" Background="#606060" ToolTip="Read messages (Still on work!)">
+            <fa:ImageAwesome Icon="Calendar" Margin="40 40"/>
         </Button>
         <Button Background="#606060" ToolTip="Settings (Still on work!)">
             <fa:ImageAwesome Icon="Gear" Margin="40 40"/>
         </Button>
         <Button Name="Quit" Background="#606060" ToolTip="Quit">
+            <fa:ImageAwesome Icon="PowerOff" Margin="40 40"/>
             <Button.Command>
                 <cmd:ShutDownCommand/>
             </Button.Command>
-            <fa:ImageAwesome Icon="PowerOff" Margin="40 40"/>
         </Button>
     </UniformGrid>
 </Window>

@@ -17,7 +17,9 @@ namespace Course3
 
         public string ServiceLogin { get; }
         
-        public string ServicePassword { get; }
+        public string ServicePassword { get; set; }
+
+        public bool? IsSavePassword { get; set; }
 
         public SecureString SecureServicePassword { get; }
     }
