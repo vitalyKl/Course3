@@ -25,8 +25,7 @@ namespace Course3.Presenters
         {
             _mailData = mailData;
             FillMailServices();
-            UsersList = uw.ReadUsers();
-            
+            UsersList = uw.ReadUsers();            
         }
 
         private void FillMailServices()

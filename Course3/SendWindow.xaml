@@ -7,13 +7,17 @@
         xmlns:cmd="clr-namespace:Course3.Infrasrtucture.Commands"
         xmlns:EditButtons="clr-namespace:EditButtons;assembly=EditButtons" x:Class="Course3.SendWindow"
         mc:Ignorable="d"
-        Title="SendWindow" Height="500" Width="500" 
+        xmlns:vm="clr-namespace:Course3.ViewModels"
+        Title="{Binding Title}" Height="500" Width="500" 
         Background="#606060"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         AllowsTransparency="False"
         x:Name="SendWindowWin"
         >
+    <Window.DataContext>
+        <vm:SendWindowViewModel/>
+    </Window.DataContext>    
     <Window.Resources>
         <Style TargetType="{x:Type Button}">
             <Setter Property="Background">
@@ -22,6 +26,16 @@
                 </Setter.Value>
             </Setter>
             <Setter Property="BorderThickness" Value="3"/>
+        </Style>
+        <Style x:Key="SelectFromDbStyle" TargetType="DataGrid">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding ElementName=ChkIsRecipientsFromDb, Path=IsChecked}" Value="True">
+                    <Setter Property="Visibility" Value="Visible"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding ElementName=ChkIsRecipientsFromDb, Path=IsChecked}" Value="False">
+                    <Setter Property="Visibility" Value="Hidden"/>
+                </DataTrigger>
+            </Style.Triggers>
         </Style>
     </Window.Resources>
     <DockPanel Background="#606060">
@@ -71,8 +85,13 @@
                 <Grid>
                     <TextBlock Text="Recipient:" Width="65" Height="25" Margin="0 0 0 400"/>
                     <TextBox x:Name="TxtRecipient" Width="300" Height="25" Margin="0 0 0 350"/>
-                    <CheckBox x:Name="ChkIsRecipientsFromDb" Content="Select form database" Width="170" Height="25" Margin="0 0 0 290" Checked="ChkIsRecipientsFromDb_Checked" Unchecked="ChkIsRecipientsFromDb_Unchecked"/>
-                    <DataGrid x:Name="RecipientsBase" Width="450" Height="300" Margin="0 50 0 0" SelectionMode="Single" Visibility="Hidden">
+                    <CheckBox x:Name="ChkIsRecipientsFromDb" Content="Select form database" Width="170" Height="25" Margin="0 0 0 290" IsChecked="False">
+                    </CheckBox>
+                    <DataGrid x:Name="RecipientsBase" Width="450" Height="300" Margin="0 50 0 0" 
+                              AutoGenerateColumns="False" 
+                              SelectionMode="Single"
+                              Style="{StaticResource SelectFromDbStyle}"
+                              FontWeight="Normal">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Surname" Width="Auto"/>
                             <DataGridTextColumn Header="Name" Width="Auto"/>
@@ -130,7 +149,7 @@
                             <fa:ImageAwesome Icon="Check" Height="14" Margin="5 0 0 0" Foreground="Green"/>
                         </StackPanel>
                     </Button>
-                    <Button x:Name="CreateTemplate" Width="100" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="360 410 0 0" ToolTip="Create new ">
+                    <Button x:Name="BtnCancelSelectionMessageTemplate" Width="100" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="360 410 0 0" ToolTip="Cancel ">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="Cancel"/>
                             <fa:ImageAwesome Icon="Plus" Height="14" Margin="5 2 0 0" Foreground="Black" Rotation="45"/>
@@ -138,8 +157,6 @@
                     </Button>
                 </Grid>
             </TabItem>
-
-
         </TabControl>
     </DockPanel>
 </Window>

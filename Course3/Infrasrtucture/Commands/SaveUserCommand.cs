@@ -18,7 +18,7 @@ namespace Course3.Infrasrtucture.Commands
             {
                 UserWorker uw = new UserWorker();
                 DataEncoder de = new DataEncoder(md.ServiceLogin, md.ServicePassword);
-                uw.SaveUser(md.SeviceName, md.ServiceLogin, de.protectedPassword);
+                uw.SaveUser(md.SeviceName, md.ServiceLogin, de.ProtectedPassword);
             }
             else
                 md.IsSavePassword = false;
