@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Course3", "Course3\Course3.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Encoder", "Encoder\Encoder.csproj", "{51D6AF76-7D68-4B31-BB9E-182A430CDC5A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EditButtons", "EditButtons\EditButtons.csproj", "{99B4F24E-C4C1-437D-8DB5-9F44C29166EB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EditButtons", "EditButtons\EditButtons.csproj", "{99B4F24E-C4C1-437D-8DB5-9F44C29166EB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

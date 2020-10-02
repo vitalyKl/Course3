@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Course3.ViewModels;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -14,21 +16,26 @@ namespace Course3
     /// </summary>
     public partial class App : Application
     {
-        private static IServiceProvider _services;
-        public static IServiceProvider Services => _services ??= GetServices().BuildServiceProvider();
 
-        private static IServiceCollection GetServices()
+        private static IHost __Hosting;
+
+        public static IServiceProvider Services => Hosting.Services;
+
+        public static IHost Hosting
         {
-            var services = new ServiceCollection();
-            InitializeService(services);
-            return services;
+            get 
+            {
+                if (__Hosting != null) return __Hosting;
+                var host_builder = Host.CreateDefaultBuilder(Environment.GetCommandLineArgs());
+                host_builder.ConfigureServices(ConfigureServices);
+                return __Hosting = host_builder.Build();
+            }
         }
 
-        private static void InitializeService(IServiceCollection services)
+        private static void ConfigureServices(HostBuilderContext host, IServiceCollection services)
         {
-            services.AddTransient<IDialogService, WindowDialog>();
+            services.AddSingleton<SendWindowViewModel>();
         }
-        
     }
 
     interface IDialogService

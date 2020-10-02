@@ -1,18 +1,38 @@
-﻿using Course3.ViewModels.Base;
+﻿using Course3.Models;
+using Course3.ViewModels.Base;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 
 namespace Course3.ViewModels
 {
     class SendWindowViewModel: ViewModel
     {
-        private string _title = "Message sender";
+        private ObservableCollection<User> _users = new ObservableCollection<User>();
+        private ObservableCollection<MailService> _services = new ObservableCollection<MailService>();
+        private ObservableCollection<Recipient> _recipients = new ObservableCollection<Recipient>();
+        private ObservableCollection<Message> _messages = new ObservableCollection<Message>();
 
-        public string Title
-        {
-            get => _title;
-            set => Set(ref _title, value);
+        public ObservableCollection<MailService> Services 
+        { 
+            get => _services; 
+            set => Set(ref _services, value); 
+        }
+        public ObservableCollection<Recipient> Recipients 
+        { 
+            get => _recipients; 
+            set => Set(ref _recipients, value); 
+        }
+        public ObservableCollection<Message> Messages 
+        { 
+            get => _messages; 
+            set => Set(ref _messages, value); 
+        }
+        internal ObservableCollection<User> Users 
+        { 
+            get => _users; 
+            set => Set(ref _users, value); 
         }
     }
 }
