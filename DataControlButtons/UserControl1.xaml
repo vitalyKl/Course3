@@ -8,6 +8,12 @@
              mc:Ignorable="d" 
              d:DesignHeight="25" d:DesignWidth="80">    
     <Grid>
+        <Grid.Resources>
+            <Style TargetType="Button">
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="BorderThickness" Value="0"/>
+            </Style>
+        </Grid.Resources>
         <Button Name="BtnAdd" Width="25" Height="25" HorizontalAlignment="Left">
             <fa:ImageAwesome Icon="Plus"/>
         </Button>

@@ -1,4 +1,5 @@
 using System.Drawing;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -21,6 +22,25 @@ namespace DataControlButtons
                 BtnAdd.Background = value;
                 BtnDelete.Background = value;
                 BtnEdit.Background = value;
+            }
+        }
+        public Thickness BThick
+        {
+            set
+            {
+                BtnAdd.BorderThickness = value;
+                BtnDelete.BorderThickness = value;
+                BtnEdit.BorderThickness = value;
+
+            }
+        }
+        public Brush BBrush
+        {
+            set 
+            {
+                BtnAdd.BorderBrush = value;
+                BtnEdit.BorderBrush = value;
+                BtnDelete.BorderBrush = value;
             }
         }
 
