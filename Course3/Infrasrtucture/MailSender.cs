@@ -56,7 +56,7 @@ namespace Course3
             try
             {
                 _sc.Send(_mm);
-                status = "Сообщение успешно отправлено!";
+                status =  $"Сообщение с заголовком \"{_mm.Subject}\" успешно отправлено!";
             }
             catch 
             {
