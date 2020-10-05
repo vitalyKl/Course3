@@ -16,11 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\EditButtons\EditButtons.csproj" />
+    <ProjectReference Include="..\DataControlButtons\DataControlButtons.csproj" />
     <ProjectReference Include="..\Encoder\Encoder.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Views\" />
   </ItemGroup>
 </Project>

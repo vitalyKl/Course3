@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Course3.Views;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -12,9 +13,9 @@ namespace Course3
 {
     class MailSender
     {
-        IMailData _mailData;
         private MailMessage _mm;
         private SmtpClient _sc;
+        private IMailData _mailData;
 
         public MailSender(IMailData mailData, ObservableCollection<MailService> services)
         {

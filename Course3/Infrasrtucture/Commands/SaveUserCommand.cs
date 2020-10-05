@@ -1,4 +1,5 @@
-﻿using Encoder;
+﻿using Course3.Views;
+using Encoder;
 using System;
 using System.Collections.Generic;
 using System.IO;

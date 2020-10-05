@@ -1,4 +1,4 @@
-﻿<Window x:Class="Course3.MainWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -6,9 +6,55 @@
         xmlns:local="clr-namespace:Course3"
         xmlns:fa="http://schemas.fontawesome.io/icons/"
         xmlns:cmd="clr-namespace:Course3.Infrasrtucture.Commands"
+        xmlns:dc="clr-namespace:DataControlButtons;assembly=DataControlButtons"
+        x:Class="Course3.MainWindow"
         mc:Ignorable="d" Width="800" Height="600" WindowStartupLocation="CenterScreen"
         Background="#606060">
-    
-    
-    
+    <Window.Resources>
+        <Style TargetType="{x:Type TabItem}">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Width" Value="Auto"/>
+        </Style>
+    </Window.Resources>
+    <DockPanel>
+        <TabControl DockPanel.Dock="Left" Background="#606060">
+            <TabItem  Height="25" Header="Списки">
+                <Grid>
+                    <ToolBarTray Height="65" Width="Auto" VerticalAlignment="Top" Background="#606060" ToolBarTray.IsLocked="True">
+                        <ToolBar Name="TbSender" Background="#606060" Width="500" Height="30">
+                            <Label Name="ISender" Content="Selecte sender" Width="125"/>
+                            <ComboBox x:Name="ComBSenderAdress" Width="270" Height="25" ToolTip="Sender" HorizontalAlignment="Left"/>
+                            <dc:UserControl1 Width="80"/>
+                        </ToolBar>
+                        <ToolBar Background="#606060" Width="500" Height="30" Band="1" BandIndex="0">
+                            <Label Name="ISelectServer" Content="Select smpt-server" Width="125"/>
+                            <ComboBox x:Name="ComBSelectServer" Width="270" Height="24" HorizontalAlignment="Left" VerticalAlignment="Top" ToolTip="smpt-server"/>
+                            <dc:UserControl1 Width="80"/>
+                        </ToolBar>
+                        <ToolBar Width="187" Height="30" Band="0" BandIndex="1" Background="#606060">
+                            <Button Name="BtnGoToPlanner" Height="25">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Go to planner" Width="125" TextAlignment="Center"/>
+                                    <fa:ImageAwesome Icon="ClockOutline" Height="Auto"/>
+                                </StackPanel>                                
+                            </Button>
+                        </ToolBar>
+                        <ToolBar Width="187" Band="1" BandIndex="1" Background="#606060">
+                            <Button Name="BtnSelectREcipients" Content="Recipients list"/>
+                            <dc:UserControl1 Width="80"/>
+                        </ToolBar>
+                    </ToolBarTray>
+                </Grid>
+            </TabItem>
+            <TabItem Height="25" Header="Планировщик">
+                <Grid/>
+            </TabItem>
+            <TabItem  Height="25" Header="Письма">
+                <Grid/>
+            </TabItem>
+            <TabItem Height="25" Header="Статистика">
+                <Grid/>
+            </TabItem>
+        </TabControl>
+    </DockPanel>
 </Window>
