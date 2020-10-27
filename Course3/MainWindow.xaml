@@ -9,11 +9,16 @@
         xmlns:dc="clr-namespace:DataControlButtons;assembly=DataControlButtons"
         x:Class="Course3.MainWindow"
         mc:Ignorable="d" Width="800" Height="600" WindowStartupLocation="CenterScreen"
-        Background="#606060">
+        Background="#606060"
+        FontSize="16">
     <Window.Resources>
         <Style TargetType="{x:Type TabItem}">
             <Setter Property="FontSize" Value="14"/>
             <Setter Property="Width" Value="Auto"/>
+        </Style>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
         </Style>
     </Window.Resources>
     <DockPanel>
@@ -22,39 +27,59 @@
                 <Grid>
                     <ToolBarTray Height="65" Width="Auto" VerticalAlignment="Top" Background="#606060" ToolBarTray.IsLocked="True">
                         <ToolBar Name="TbSender" Background="#606060" Width="500" Height="30">
-                            <Label Name="ISender" Content="Selecte sender" Width="125"/>
+                            <Label Name="ISender" Content="Select sender" Width="125"/>
                             <ComboBox x:Name="ComBSenderAdress" Width="270" Height="25" ToolTip="Sender" HorizontalAlignment="Left"/>
                             <dc:UserControl1 Width="80"/>
                         </ToolBar>
                         <ToolBar Background="#606060" Width="500" Height="30" Band="1" BandIndex="0">
                             <Label Name="ISelectServer" Content="Select smpt-server" Width="125" Height="30"/>
-                            <ComboBox x:Name="ComBSelectServer" Width="270" Height="24" HorizontalAlignment="Left" VerticalAlignment="Top" ToolTip="smpt-server"/>
+                            <ComboBox x:Name="ComBSelectServer" Width="270" Height="25" HorizontalAlignment="Left" VerticalAlignment="Top" ToolTip="smpt-server"/>
                             <dc:UserControl1 Width="80"/>
                         </ToolBar>
-                        <ToolBar Width="187" Height="30" Band="0" BandIndex="1" Background="#606060">
-                            <Button Name="BtnGoToPlanner" Height="25">
+                        <ToolBar Width="248" Height="30" Band="0" BandIndex="1" Background="#606060">
+                            <Button Name="BtnGoToPlanner" Width="231" Height="25" BorderBrush="LightGray" BorderThickness="2">
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="Go to planner" Width="125" TextAlignment="Center"/>
+                                    <TextBlock Text="Go to planner" Width="125" TextAlignment="Center" Height="25"/>
                                     <fa:ImageAwesome Icon="ClockOutline" Height="Auto"/>
-                                </StackPanel>                                
+                                </StackPanel>
                             </Button>
                         </ToolBar>
-                        <ToolBar Width="187" Band="1" BandIndex="1" Background="#606060">
-                            <Button Name="BtnSelectREcipients" Content="Recipients list"/>
-                            <dc:UserControl1 Width="80"/>
+                        <ToolBar Band="1" BandIndex="1" Background="#606060">
+                            <Button Name="BtnSelectREcipients" Content="Recipients list"  BorderBrush="LightGray" BorderThickness="2" Height="25" Width="150"/>
+                            <dc:UserControl1 Width="80" Margin="1 0 0 0"/>
                         </ToolBar>
                     </ToolBarTray>
+                    <DataGrid Margin="30 100 30 50">
+                    </DataGrid>
                 </Grid>
             </TabItem>
             <TabItem Height="25" Header="Планировщик">
-                <Grid/>
+                <Grid>
+                    <DatePicker Width="250" Height="25" VerticalContentAlignment="Center" HorizontalContentAlignment="Stretch" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="16">
+                    </DatePicker>
+                    <Button Width="250" Height="25" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0 25 0 0">
+                        <StackPanel Orientation="Horizontal">
+                            <fa:ImageAwesome Icon="ClockOutline" Height="20"/>
+                            <TextBlock Text="Отправить запланированно" TextWrapping="WrapWithOverflow" Margin="10 0 0 0"/>
+                        </StackPanel>
+                    </Button>
+                    <Button Width="250" Height="25" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0 50 0 0">
+                        <StackPanel Orientation="Horizontal">
+                            <fa:ImageAwesome Icon="SendOutline"/>
+                            <TextBlock Text="Отправить сразу" Margin="10 0 0 0"/>
+                        </StackPanel>
+                    </Button>
+                </Grid>
             </TabItem>
-            <TabItem  Height="25" Header="Письма">
-                <Grid/>
+            <TabItem  Height="25" Header="Редактор писем">
+                <Grid>
+                    <RichTextBox Margin="10 20 10 50"/>
+                </Grid>
             </TabItem>
             <TabItem Height="25" Header="Статистика">
                 <Grid/>
             </TabItem>
+            <Grid Height="551" Width="794"/>
         </TabControl>
     </DockPanel>
 </Window>
