@@ -9,6 +9,7 @@
         xmlns:dc="clr-namespace:DataControlButtons;assembly=DataControlButtons"
         x:Class="Course3.MainWindow"
         mc:Ignorable="d" Width="800" Height="600" WindowStartupLocation="CenterScreen"
+        xmlns:data="clr-namespace:Course3.Data"
         Background="#606060"
         FontSize="16">
     <Window.Resources>
@@ -42,35 +43,74 @@
         <TabControl DockPanel.Dock="Left" Background="#606060">
             <TabItem  Height="25" Header="Списки">
                 <Grid>
-                    <ToolBarTray Height="65" Width="Auto" VerticalAlignment="Top" Background="#606060" ToolBarTray.IsLocked="True">
-                        <ToolBar Name="TbSender" Background="#606060" Width="500" Height="30" Band="1">
-                            <Label Name="ISender" Content="Select sender" Width="125"/>
-                            <ComboBox x:Name="ComBSenderAdress" Width="270" Height="25" ToolTip="Sender" HorizontalAlignment="Left"/>
+                    <ToolBarTray Height="65" Width="Auto" 
+                                 VerticalAlignment="Top" 
+                                 Background="#606060" 
+                                 ToolBarTray.IsLocked="True">
+                        <ToolBar Name="TbSender" 
+                                 Background="#606060" 
+                                 Width="500" Height="30" 
+                                 Band="1">
+                            <Label Name="ISender" 
+                                   Content="Select sender" 
+                                   Width="125"/>
+                            <ComboBox x:Name="ComBSenderAdress" 
+                                      Width="270" Height="25" 
+                                      ToolTip="Sender" 
+                                      HorizontalAlignment="Left" 
+                                      ItemsSource="{x:Static data:TestData.Senders}">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate DataType="m:Sender">
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding Name}" ToolTip="{Binding Adress}"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
                             <dc:UserControl1 Width="80"/>
                         </ToolBar>
                         <ToolBar Background="#606060" Width="500" Height="30" Band="0" BandIndex="0">
                             <Label Name="ISelectServer" Content="Select smpt-server" Width="125" Height="30"/>
-                            <ComboBox x:Name="ComBSelectServer" Width="270" Height="25" HorizontalAlignment="Left" VerticalAlignment="Top" ToolTip="smpt-server"/>
+                            <ComboBox x:Name="ComBSelectServer"
+                                      Width="270" Height="25" 
+                                      HorizontalAlignment="Left" 
+                                      VerticalAlignment="Top" 
+                                      ToolTip="smpt-server" 
+                                      ItemsSource="{x:Static data:TestData.Servers}" 
+                                      DisplayMemberPath="Adress"/>
                             <dc:UserControl1 Width="80"/>
                         </ToolBar>
-                        <ToolBar Width="248" Height="30" Band="0" BandIndex="1" Background="#606060">
-                            <Button Name="BtnGoToPlanner" Width="231" Height="25" BorderBrush="LightGray" BorderThickness="2">
+                        <ToolBar Width="248" Height="30" 
+                                 Band="0" BandIndex="1" 
+                                 Background="#606060">
+                            <Button Name="BtnGoToPlanner" 
+                                    Width="231" Height="25" 
+                                    BorderBrush="LightGray" 
+                                    BorderThickness="2">
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Text="Go to planner" Width="125" TextAlignment="Center" Height="25"/>
                                     <fa:ImageAwesome Icon="ClockOutline" Height="Auto"/>
                                 </StackPanel>
                             </Button>
                         </ToolBar>
-                        <ToolBar Band="1" BandIndex="1" Background="#606060">
-                            <Button Name="BtnSelectREcipients" Content="Recipients list"  BorderBrush="LightGray" BorderThickness="2" Height="25" Width="150"/>
+                        <ToolBar Band="1" BandIndex="1" 
+                                 Background="#606060">
+                            <Button Name="BtnSelectREcipients" 
+                                    Content="Recipients list"  
+                                    BorderBrush="LightGray" 
+                                    BorderThickness="2" 
+                                    Height="25" Width="150"/>
                             <dc:UserControl1 Width="80" Margin="1 0 0 0"/>
                         </ToolBar>
                     </ToolBarTray>
-                    <DataGrid Margin="30 100 30 50" AutoGenerateColumns="False">
+                    <DataGrid Margin="30 100 30 50" 
+                              AutoGenerateColumns="False" 
+                              ItemsSource="{x:Static data:TestData.Recipients}" 
+                              AlternatingRowBackground="LightGray">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Id" MinWidth="30"/>
-                            <DataGridTextColumn Header="Имя" Width="*"/>
-                            <DataGridTextColumn Header="E-mail" MinWidth="250"/>
+                            <DataGridTextColumn Header="Имя" Width="*" Binding="{Binding Name}"/>
+                            <DataGridTextColumn Header="E-mail" MinWidth="250" Binding="{Binding Adress}"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
@@ -142,19 +182,19 @@
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
                     <GroupBox Grid.Column="0" Header="Список писем">
-                        <ListBox>
-                            <ListBoxItem>Письмо 1</ListBoxItem>
-                            <ListBoxItem>Письмо 2</ListBoxItem>
-                            <ListBoxItem>Письмо 3</ListBoxItem>
+                        <ListBox Name="MessagesList" ItemsSource="{x:Static data:TestData.Messages}" DisplayMemberPath="Subject">
                         </ListBox>
                     </GroupBox>
                     <GroupBox Grid.Column="1" Header="Редактор">
                         <DockPanel>
                             <GroupBox Header="Заголовок" DockPanel.Dock="Top">
-                                <TextBox/>
+                                <TextBox Text="{Binding ElementName=MessagesList, Path=SelectedItem.Subject}"/>
                             </GroupBox>
                             <GroupBox Header="Тело письма">
-                                <TextBox AcceptsReturn="True" AcceptsTab="True" TextWrapping="Wrap"/>
+                                <TextBox AcceptsReturn="True" 
+                                         AcceptsTab="True" 
+                                         TextWrapping="Wrap" 
+                                         Text="{Binding ElementName=MessagesList, Path=SelectedItem.Body}"/>
                             </GroupBox>
                         </DockPanel>
                     </GroupBox>

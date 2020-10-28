@@ -9,16 +9,16 @@ namespace Course3.Models
         private int _Port;
 
         public string Adress { get; set; }
-        public int Port 
-        { 
-            get => _Port; 
+        public int Port
+        {
+            get => _Port;
             set
             {
                 if (value < 0 || value > 65535)
                 {
-                    throw new ArgumentOutOfRangeException(nameof(value), value, "Номер порта должен быть в диапазоне от 0 до 65535");                    
+                    throw new ArgumentOutOfRangeException(nameof(value), value, "Номер порта должен быть в диапазоне от 0 до 65535");
                 }
-                _Port = value;
+                _Port = 25;
             }
         }
         public bool UseSSL { get; set; }

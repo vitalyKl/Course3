@@ -16,8 +16,6 @@ namespace Course3
         {
             InitializeComponent();
             _users = _uw.ReadUsers();
-            ComBSenderAdress.ItemsSource = _users;
-            ComBSenderAdress.DisplayMemberPath = "Login";
         }
     }
 }
