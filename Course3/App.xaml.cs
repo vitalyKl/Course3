@@ -16,35 +16,6 @@ namespace Course3
     /// </summary>
     public partial class App : Application
     {
-
-        private static IHost __Hosting;
-
-        public static IServiceProvider Services => Hosting.Services;
-
-        public static IHost Hosting
-        {
-            get 
-            {
-                if (__Hosting != null) return __Hosting;
-                var host_builder = Host.CreateDefaultBuilder(Environment.GetCommandLineArgs());
-                host_builder.ConfigureServices(ConfigureServices);
-                return __Hosting = host_builder.Build();
-            }
-        }
-
-        private static void ConfigureServices(HostBuilderContext host, IServiceCollection services)
-        {
-            services.AddSingleton<SendWindowViewModel>();
-        }
     }
 
-    interface IDialogService
-    {
-        void ShowInfo(string msg);
-    }
-
-    class WindowDialog : IDialogService
-    {
-        public void ShowInfo(string msg) => MessageBox.Show(msg);
-    }
 }

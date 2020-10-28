@@ -1,0 +1,3 @@
+gmail;mstester27102020@gmail.com;29898298
+mail.ru;mstester27102020@mail.ru;ms27102020test
+yandex;mstester27102020@yandex.ru;ms27102020test

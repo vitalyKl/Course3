@@ -14,6 +14,7 @@ namespace Course3.Infrasrtucture
         private string _login;
         private SecureString _password;
         private readonly string _dataPath = @"Resources\UsersData.txt";
+        private DataEncoder _de;
 
         public string Login { get => _login; private set => _login = value; }
         public SecureString Password { get => _password; private set => _password = value; }
@@ -26,6 +27,8 @@ namespace Course3.Infrasrtucture
         public ObservableCollection<User> ReadUsers()
         {
             ObservableCollection<User> users = new ObservableCollection<User>();
+
+
             string[] data = new string[3];
             using (StreamReader sr = new StreamReader(_dataPath))
             {
@@ -38,11 +41,15 @@ namespace Course3.Infrasrtucture
             return users;
         }
 
-        public void SaveUser(string service, string login, string securedPassword)
+        public void SaveUser(ObservableCollection<User> users)
         {
             using (StreamWriter sw = new StreamWriter(_dataPath))
             {
-                sw.WriteLine($"{service};{login};{securedPassword}");
+                foreach (User x in users)
+                {
+                    _de = new DataEncoder(x.Login, x.Password);
+                    sw.WriteLine($"{x.Service};{x.Login};{_de.ProtectedPassword}");
+                }                
             }
             
         }
