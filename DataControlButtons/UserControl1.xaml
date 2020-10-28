@@ -19,7 +19,7 @@
             <fa:ImageAwesome Icon="Plus"/>
         </Button>
         <Button Name="BtnEdit" Width="25" Height="25" HorizontalAlignment="Center">
-            <fa:ImageAwesome Icon="Pencil"/>
+            <fa:ImageAwesome Icon="Edit"/>
         </Button>
         <Button Name="BtnDelete" Width="25" Height="25" HorizontalAlignment="Right">
             <fa:ImageAwesome Icon="Trash"/>

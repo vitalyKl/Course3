@@ -43,12 +43,12 @@
             <TabItem  Height="25" Header="Списки">
                 <Grid>
                     <ToolBarTray Height="65" Width="Auto" VerticalAlignment="Top" Background="#606060" ToolBarTray.IsLocked="True">
-                        <ToolBar Name="TbSender" Background="#606060" Width="500" Height="30">
+                        <ToolBar Name="TbSender" Background="#606060" Width="500" Height="30" Band="1">
                             <Label Name="ISender" Content="Select sender" Width="125"/>
                             <ComboBox x:Name="ComBSenderAdress" Width="270" Height="25" ToolTip="Sender" HorizontalAlignment="Left"/>
                             <dc:UserControl1 Width="80"/>
                         </ToolBar>
-                        <ToolBar Background="#606060" Width="500" Height="30" Band="1" BandIndex="0">
+                        <ToolBar Background="#606060" Width="500" Height="30" Band="0" BandIndex="0">
                             <Label Name="ISelectServer" Content="Select smpt-server" Width="125" Height="30"/>
                             <ComboBox x:Name="ComBSelectServer" Width="270" Height="25" HorizontalAlignment="Left" VerticalAlignment="Top" ToolTip="smpt-server"/>
                             <dc:UserControl1 Width="80"/>
