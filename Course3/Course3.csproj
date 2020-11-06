@@ -10,16 +10,27 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Resources\MailServicesData.txt" />
+    <None Remove="Resources\Services.txt" />
+    <None Remove="Resources\UsersData.txt" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="FontAwesome.WPF" Version="4.7.0.9" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.8" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="3.1.8" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Resources\MailServicesData.txt">
+    <ProjectReference Include="..\DataControlButtons\DataControlButtons.csproj" />
+    <ProjectReference Include="..\Encoder\Encoder.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Services.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
+    </Resource>
+    <Resource Include="Resources\UsersData.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 </Project>

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Security;
 using System.Text;
 
-namespace Course3
+namespace Course3.Views
 {
     interface IMailData
     {
@@ -16,9 +16,10 @@ namespace Course3
         public string SeviceName { get; }
 
         public string ServiceLogin { get; }
-        
+
         public string ServicePassword { get; }
 
         public SecureString SecureServicePassword { get; }
+        bool IsSavePassword { get; set; }
     }
 }

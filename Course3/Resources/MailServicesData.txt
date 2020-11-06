@@ -1,3 +1,0 @@
-yandex smtp.yandex.ru 25 true
-gmail smtp.gmail.com 587 true
-mail.ru smtp.mail.ru 2525 false

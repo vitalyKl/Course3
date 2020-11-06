@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Course3.ViewModels;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -14,4 +17,5 @@ namespace Course3
     public partial class App : Application
     {
     }
+
 }

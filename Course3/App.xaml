@@ -3,8 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:Course3"
              xmlns:fa="http://schemas.fontawesome.io/icons/"
+             xmlns:vm="clr-namespace:Course3.ViewModels"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        
+        <vm:ViewModelLocator x:Key="Locator"/>
     </Application.Resources>
 </Application>
